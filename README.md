@@ -1,4 +1,4 @@
-## 🔐 Google Login Setup in React (with @react-oauth/google)
+##  Google Login Setup in React (with @react-oauth/google)
 
 This guide walks you through setting up Google Login using React and Google Cloud Console.
 
@@ -46,10 +46,12 @@ This guide walks you through setting up Google Login using React and Google Clou
   onError={() => console.log('Login Failed')}
 />
 
+---
+
 ###  Step 4: Run Your App with:
 
 npm start
-# or
+or
 npm run dev
 
 
