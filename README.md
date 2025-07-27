@@ -1,35 +1,57 @@
-Step 1: Google Cloud Setup
-Go to Google Cloud Console.
+## 🔐 Google Login Setup in React (with @react-oauth/google)
 
-Create a new project or select an existing one.
+This guide walks you through setting up Google Login using React and Google Cloud Console.
 
-Navigate to "APIs & Services" → "OAuth consent screen".
+---
 
-Choose "External", fill in app details (name, email), and avoid using “Google” in the name.
+###  Step 1: Google Cloud Console Configuration
 
-Add your email as a test user, then finish the setup.
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select an existing one.
+3. Navigate to **APIs & Services → OAuth consent screen**
+4. Choose **External**, enter your app name and support email.
+   > ⚠️ *Avoid using "Google" or other brand names in the app name.*
+5. Add your email as a **test user**.
+6. Save and continue through the remaining steps.
 
-Step 2: Create OAuth Credentials
-Go to "Credentials" in the same menu.
+---
 
-Click "Create Credentials" → "OAuth client ID".
+###  Step 2: Create OAuth Credentials
 
-Choose "Web Application".
+1. Go to **Credentials** → click **Create Credentials → OAuth client ID**
+2. Choose **Web application**
+3. Set **Authorized JavaScript origins**:
+   - `http://localhost:3000` (for Create React App)
+   - or `http://localhost:5173` (for Vite)
+4. Click **Create** and **copy your Client ID**
 
-Add authorized origins like http://localhost:5173 (for Vite) or http://localhost:3000 (for React).
+---
 
-Copy the Client ID shown after creation.
+###  Step 3: React App Setup
 
-Step 3: In Your React App
-Install the Google OAuth library (@react-oauth/google) using npm/yarn.
+1. Install the Google OAuth library:
+   ```bash
+   npm install @react-oauth/google
 
-Wrap your app with the Google OAuth provider using the Client ID.
+2. Wrap your root component with:
+   
+<GoogleOAuthProvider clientId="YOUR_CLIENT_ID">
+  <App />
+</GoogleOAuthProvider>
 
-Add a Google login button using the library's component.
+3. Add the Google Login button inside your component:
 
-Use the login response to handle authentication or user info.
+<GoogleLogin
+  onSuccess={credentialResponse => console.log(credentialResponse)}
+  onError={() => console.log('Login Failed')}
+/>
 
-Step 4: Run & Test
-Start your app (npm run dev or npm start).
+###  Step 4: Run Your App with:
 
-Visit your local site, click the login button, and sign in using Google.
+npm start
+# or
+npm run dev
+
+
+
+
