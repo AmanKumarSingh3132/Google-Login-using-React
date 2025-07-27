@@ -1,12 +1,35 @@
-# React + Vite
+Step 1: Google Cloud Setup
+Go to Google Cloud Console.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Create a new project or select an existing one.
 
-Currently, two official plugins are available:
+Navigate to "APIs & Services" → "OAuth consent screen".
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Choose "External", fill in app details (name, email), and avoid using “Google” in the name.
 
-## Expanding the ESLint configuration
+Add your email as a test user, then finish the setup.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Step 2: Create OAuth Credentials
+Go to "Credentials" in the same menu.
+
+Click "Create Credentials" → "OAuth client ID".
+
+Choose "Web Application".
+
+Add authorized origins like http://localhost:5173 (for Vite) or http://localhost:3000 (for React).
+
+Copy the Client ID shown after creation.
+
+Step 3: In Your React App
+Install the Google OAuth library (@react-oauth/google) using npm/yarn.
+
+Wrap your app with the Google OAuth provider using the Client ID.
+
+Add a Google login button using the library's component.
+
+Use the login response to handle authentication or user info.
+
+Step 4: Run & Test
+Start your app (npm run dev or npm start).
+
+Visit your local site, click the login button, and sign in using Google.
